@@ -24,9 +24,23 @@ namespace A01GuthErik
             file.Close();
         }
 
+        static int Maximumertek()
+        {
+            int maxHely = 0;
+            for (int i = 1; i < tomb.Length; i++)
+            {
+                if (tomb[maxHely] < tomb[i])
+                {
+                    maxHely = i;
+                }
+            }
+            return tomb[maxHely];
+        }
+
         static void Main(string[] args)
         {
             Beolvasas();
+            Console.WriteLine("A maximum: {0}", Maximumertek());
 
             Console.ReadKey();
         }
