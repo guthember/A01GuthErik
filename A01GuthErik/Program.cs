@@ -18,23 +18,23 @@ namespace A01GuthErik
             
             for (int i = 0; i < tomb.Length; i++)
             {
-                tomb[i] = int.Parse(file.ReadLine()) * 2;
+                tomb[i] = int.Parse(file.ReadLine()) * 3;
             }
 
             file.Close();
         }
 
-        static int Maximumertek()
+        static int Minimumertek()
         {
-            int maxHely = 0;
+            int minHely = 0;
             for (int i = 1; i < tomb.Length; i++)
             {
-                if (tomb[maxHely] < tomb[i])
+                if (tomb[minHely] > tomb[i])
                 {
-                    maxHely = i;
+                    minHely = i;
                 }
             }
-            return tomb[maxHely];
+            return tomb[minHely];
         }
 
         static int Egyediek()
@@ -43,7 +43,7 @@ namespace A01GuthErik
             int db = 0;
             for (int i = 0; i < tomb.Length; i++)
             {
-                if ((tomb[i] % 5 == 0) && (tomb[i] % 7 == 0))
+                if ((tomb[i] % 5 == 0) && (tomb[i] % 4 != 0))
                 {
                     db++;
                     file.WriteLine(tomb[i].ToString());
@@ -57,8 +57,8 @@ namespace A01GuthErik
         static void Main(string[] args)
         {
             Beolvasas();
-            Console.WriteLine("A maximum: {0}", Maximumertek());
-            Console.WriteLine("5 és 7 oszthatóak száma: {0}", Egyediek());
+            Console.WriteLine("A maximum: {0}", Minimumertek());
+            Console.WriteLine("5 osztható de 4 nem oszthatóak száma: {0}", Egyediek());
 
             Console.ReadKey();
         }
